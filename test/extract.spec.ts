@@ -17,5 +17,9 @@ describe(".extract()", () => {
 
     it('should return domain name of url', () => {
         expect(urlExtractor.extract('tddbuddy.com').domain).to.equal('tddbuddy.com');
-    })
+    });
+
+    it('should return a URLData object with subdomain', () => {
+        expect(urlExtractor.extract('www.tddbuddy.com').subdomain).to.equal('www');
+    });
 });
