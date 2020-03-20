@@ -1,5 +1,5 @@
 export default class URLData {
-    private readonly domain: string;
+    public domain: string;
     constructor(domain: string) {
         this.domain = domain;
     }
