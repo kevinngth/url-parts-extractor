@@ -22,4 +22,12 @@ describe(".extract()", () => {
     it('should return a URLData object with subdomain', () => {
         expect(urlExtractor.extract('www.tddbuddy.com').subdomain).to.equal('www');
     });
+
+    it('should return a URLData object with protocol', () => {
+        const result = urlExtractor.extract('http://www.tddbuddy.com')
+        expect(result.subdomain).to.equal('www');
+        expect(result.protocol).to.equal('http');   
+        expect(result.domain).to.equal('tddbuddy.com');
+    
+    })
 });
