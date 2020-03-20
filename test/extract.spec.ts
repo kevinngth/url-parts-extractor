@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import urlExtractor from '../src/urlExtractor';
+import URLData from "../src/models/URLData";
 
 describe(".extract()", () => {
     it ("should throw an error when argument is an empty string", () => {
@@ -11,7 +12,7 @@ describe(".extract()", () => {
     });
 
     it('should return an object when a url is passed in', () => {
-        expect(urlExtractor.extract('tddbuddy.com')).to.be.an('object');
+        expect(urlExtractor.extract('tddbuddy.com')).to.be.instanceOf(URLData);
     });
 
     it('should return domain name of url', () => {
