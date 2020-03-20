@@ -6,6 +6,6 @@ export default {
         if (!url) {
             throw new Error(EMPTY_URL_ERROR_MESSAGE);
         }
-        return new URLData();
+        return new URLData(url);
     }
 }

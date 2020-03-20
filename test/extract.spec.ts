@@ -13,4 +13,8 @@ describe(".extract()", () => {
     it('should return an object when a url is passed in', () => {
         expect(urlExtractor.extract('tddbuddy.com')).to.be.an('object');
     });
+
+    it('should return domain name of url', () => {
+        expect(urlExtractor.extract('tddbuddy.com').domain).to.equal('tddbuddy.com');
+    })
 });
