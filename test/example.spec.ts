@@ -1,9 +1,9 @@
-import {assert} from 'chai';
+import {expect} from 'chai';
 
 describe("First test", () => {
 
     it ("should pass the test", () => {
 
-        assert.isTrue(true);
+        expect(true).to.be.true;
     });
 });
