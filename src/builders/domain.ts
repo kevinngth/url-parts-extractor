@@ -1,10 +1,8 @@
 import URLData from "../models/URLData";
 
-const HTTP_PROTOCOL = 'http://';
 const DEFAULT_SUBDOMAIN = '';
-const domainSeparator = '.';
-
-const getDomainArray = (url: string) => url.split(domainSeparator);
+const DOMAIN_SEPARATOR = '.';
+const getDomainArray = (hostname: string) => hostname.split(DOMAIN_SEPARATOR);
 
 export default {
     hasSubdomain(url: string): boolean {
@@ -12,19 +10,13 @@ export default {
     },
 
     buildSubdomain(urlData: URLData): void {
-        const protocolAndSubdomain = getDomainArray(urlData.url)[0];
-        if (urlData.hasSubdomain()) {
-            urlData.subdomain = protocolAndSubdomain.replace(HTTP_PROTOCOL, DEFAULT_SUBDOMAIN);
-        }
+        urlData.subdomain = urlData.hasSubdomain() ? getDomainArray(urlData.hostname)[0] : DEFAULT_SUBDOMAIN;
     },
 
     buildDomain(urlData: URLData): void {
-        const domainArray = getDomainArray(urlData.url);
-        if (urlData.hasSubdomain()) {
-            urlData.domain = domainArray.slice(1).join('.');
-        }
-        urlData.domain = urlData.hasSubdomain()
-            ? domainArray.slice(1).join('.')
-            : domainArray.join('.').replace(HTTP_PROTOCOL, DEFAULT_SUBDOMAIN);
+        const { hostname } = urlData
+        urlData.domain = urlData.hasSubdomain() 
+            ? getDomainArray(hostname).slice(1).join(DOMAIN_SEPARATOR) 
+            : hostname;
     }
 }

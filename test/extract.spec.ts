@@ -38,4 +38,10 @@ describe(".extract()", () => {
         expect(result.protocol).to.equal('http');
         expect(result.domain).to.equal('tddbuddy.com');
     })
+
+    it("should return a URLData object with hostname", () => {
+        expect(urlExtractor.extract('tddbuddy.com').hostname).to.equal('tddbuddy.com');
+        expect(urlExtractor.extract('www.tddbuddy.com').hostname).to.equal('www.tddbuddy.com');
+        expect(urlExtractor.extract('http://www.tddbuddy.com').hostname).to.equal('www.tddbuddy.com');
+    })
 });

@@ -1,8 +1,9 @@
 export default class URLData {
-    public subdomain: string = '';
-    public domain: string = '';
-    public protocol: string = '';
-    public url: string = '';
+    public hostname: string;
+    public subdomain: string;
+    public domain: string;
+    public protocol: string;
+    public url: string;
     private readonly domainSeparator: string = '.';
 
     constructor(url: string) {
