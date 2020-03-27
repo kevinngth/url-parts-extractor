@@ -12,7 +12,9 @@ describe(".extract()", () => {
     });
 
     it('should return an object when a url is passed in', () => {
-        expect(urlExtractor.extract('tddbuddy.com')).to.be.instanceOf(URLData);
+        const result = urlExtractor.extract('tddbuddy.com');
+        expect(result).to.be.instanceOf(URLData);
+        expect(result.subdomain).to.equal('');
     });
 
     it('should return domain name of url', () => {
@@ -23,11 +25,17 @@ describe(".extract()", () => {
         expect(urlExtractor.extract('www.tddbuddy.com').subdomain).to.equal('www');
     });
 
-    it('should return a URLData object with protocol', () => {
-        const result = urlExtractor.extract('http://www.tddbuddy.com')
+    it('should return a URLData object with protocol, domain and subdomain', () => {
+        const result = urlExtractor.extract('http://www.tddbuddy.com');
         expect(result.subdomain).to.equal('www');
-        expect(result.protocol).to.equal('http');   
+        expect(result.protocol).to.equal('http');
         expect(result.domain).to.equal('tddbuddy.com');
-    
+    })
+
+    it('should return a URLData object with protocol and domain', () => {
+        const result = urlExtractor.extract('http://tddbuddy.com');
+        expect(result.subdomain).to.equal('');
+        expect(result.protocol).to.equal('http');
+        expect(result.domain).to.equal('tddbuddy.com');
     })
 });
